@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export async function getCountry() {
   try {
     const URL = "https://crio-location-selector.onrender.com/countries";
@@ -8,8 +9,10 @@ export async function getCountry() {
     return data;
   } catch (err) {
     console.error(err);
+    return []; 
   }
 }
+
 export async function getStates(country) {
   try {
     const URL = `https://crio-location-selector.onrender.com/country=${country}/states`;
@@ -19,8 +22,10 @@ export async function getStates(country) {
     return data;
   } catch (error) {
     console.error(error);
+    return []; 
   }
 }
+
 export async function getCities(country, state) {
   try {
     const URL = `https://crio-location-selector.onrender.com/country=${country}/state=${state}/cities`;
@@ -30,5 +35,6 @@ export async function getCities(country, state) {
     return data;
   } catch (error) {
     console.error(error);
+    return []; 
   }
 }
