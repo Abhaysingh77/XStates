@@ -7,12 +7,16 @@ function App() {
   const [cities, setCities] = useState([]);
   const [country, setCountry] = useState("");
   const [state, setState] = useState("");
+  const [city, setCity] = useState("");
 
   const handleCountry = async (e) => {
     setCountry(e.target.value);
   };
   const handleState = async (e) => {
     setState(e.target.value);
+  };
+  const handleCity = async (e) => {
+    setCity(e.target.value);
   };
 
   useEffect(() => {
@@ -56,7 +60,7 @@ function App() {
           );
         })}
       </select>
-      <select name="" id="" className="select">
+      <select name="" id="" className="select" onChange={handleCity}>
         <option>Select City</option>
         {cities.map((item) => {
           return (
@@ -66,6 +70,9 @@ function App() {
           );
         })}
       </select>
+      {
+        city && <p>You Selected <b>{city}</b>, {state}, {country}</p>
+      }
     </div>
   );
 }
