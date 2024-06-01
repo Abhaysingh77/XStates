@@ -33,10 +33,10 @@ function App() {
   }, [country]);
   useEffect(() => {
     (async () => {
-      const data = await getStates(country,state);
+      const data = await getCities(country,state);
       setCities(data);
     })();
-  }, [country, state]);
+  }, [state]);
   return (
     <div className="app">
       <div className="heading">Select Location</div>
@@ -71,7 +71,7 @@ function App() {
         })}
       </select>
       {
-        city && <p>You Selected <b>{city}</b>, {state}, {country}</p>
+        (city && country && state) && <p>You Selected <b>{city}</b>, {state}, {country}</p>
       }
     </div>
   );
